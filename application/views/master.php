@@ -26,6 +26,9 @@ class plantilla
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
 
 <script type="text/javascript">
 
@@ -155,19 +158,20 @@ function calcular()
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="<?php echo base_url('index.php?/Factura/index'); ?>">Inicio</a>
+        <a class="navbar-brand" href="<?php echo base_url('index.php?/Usuarios'); ?>">Inicio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="<?php echo base_url('index.php?/Factura/index'); ?>">Home
+               <a class="nav-link" href="<?php echo base_url('index.php?/Usuarios'); ?>">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url('index.php?/Factura/Crear'); ?>">Crear Factura</a>
+               <a class="nav-link" href="<?php echo base_url('index.php?/Factura/Crear'); ?>">Crear Factura</a>
+             
             </li>
             
           </ul>
