@@ -24,10 +24,10 @@ class Usuarios extends CI_Controller
 			$data = array('Nombre'=>$_POST['txtnombre'],'Apellido'=>$_POST['txtapellido'],'Correo'=>$_POST['txtcorreo'],'Clave'=>$_POST['txtclave']);
 			$this->db->insert('usuarios',$data);
 		    $_SESSION['id'] = $this->db->insert_id();
-            $_SESSION['usuario'] = $user;
+            $_SESSION['usuario'] = $_POST['txtcorreo'];
             $_SESSION['start'] = time();
             $_SESSION['expire'] = $_SESSION['start'] + (60*30);
-			$this->load->view('Factura/Inicio');
+			$this->load->view('Usuarios/login');
 		}
 		else
 		{
@@ -40,7 +40,7 @@ class Usuarios extends CI_Controller
 	function loguearUsuario()
 	{
 
-       require 'application\views\session.php';
+        require 'application\views\session.php';
 	    if($_POST)
         {
 	    $user = $_POST['txtcorreo'];
@@ -53,7 +53,7 @@ class Usuarios extends CI_Controller
            $_SESSION['usuario'] = $user;
            $_SESSION['start'] = time();
            $_SESSION['expire'] = $_SESSION['start'] + (60*30);
-           $this->load->view("Factura/Inicio");
+           echo "<script>window.location='index.php?/Factura/'</script>";
 	    }
 	    else
 	    {

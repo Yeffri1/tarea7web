@@ -98,7 +98,10 @@ class factura extends CI_Controller
 
 	function imprimir_factura($id)
 	{
-		$query = $this->db->query("select * from factura where codigo={$id};");
+		require 'application\views\session.php';
+		$query = $this->db->query("select * from factura where codigo={$id} and usuario_id='{$_SESSION['id']}';");
+		if($query->num_rows()>0)
+		{
 		$resultado = $query->result_array();
    	   $pdf = new PDF();
    	   $pdf->AliasNbPages();
@@ -179,6 +182,12 @@ class factura extends CI_Controller
 
 
 	}
+	else
+	{
+		echo "<h2>No se puede imprimir esta factura</h2>";
+	}
+
+}
 }
 
  ?>

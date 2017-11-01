@@ -2,14 +2,10 @@
 error_reporting(0);
 require 'application\views\session.php';
 if(isset($_SESSION['usuario']))
-{?>
-<?
-
+{
 include('application\views\master.php');
 plantilla::inicio();
 $CI =& get_instance();
-
-
  ?>
 
 
