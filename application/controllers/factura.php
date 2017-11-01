@@ -48,10 +48,11 @@ class factura extends CI_Controller
 	}
 	function save_factura()
 	{
+		 require 'application\views\session.php';
 		if($_POST)
 		 {
 	        $da  = array('cliente' => $_POST['txtcliente'], 'rnc' => $_POST['txtrnc'],
-		'fecha' => $_POST['txtfecha'], 'descripcion' => $_POST['txtdescripcion'] );
+		'fecha' => $_POST['txtfecha'], 'descripcion' => $_POST['txtdescripcion'],'usuario_id'=>$_SESSION['id'] );
 		$this->db->insert('factura',$da);
 
 		$id = $this->db->insert_id();

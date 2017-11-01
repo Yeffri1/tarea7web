@@ -37,7 +37,7 @@ error_reporting(0);
  		if($_POST)
           {
              $nombre = $_POST['txtnombre'];
-             $datos = $CI->db->query("Select * from factura where cliente like '%{$nombre}%' ");
+             $datos = $CI->db->query("Select * from factura where cliente like '%{$nombre}%' and usuario_id='{$_SESSION['id']}'");
          
           if($datos->num_rows()>0)
            {
@@ -70,7 +70,7 @@ error_reporting(0);
 
         else
         {
-          $datos = $CI->db->query('Select * from factura');
+          $datos = $CI->db->query("Select * from factura where usuario_id='{$_SESSION['id']}'");
          if($datos->num_rows()>0)
           {
            foreach($datos->result_array() as $dat)

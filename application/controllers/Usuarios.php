@@ -40,9 +40,12 @@ class Usuarios extends CI_Controller
       	echo "Estoy aki";
 	    $user = $_POST['txtcorreo'];
 	    $pss = $_POST['txtpass'];
-   	    $result = $this->db->query("select Correo,Clave from usuarios where Correo='{$user}' and Clave='{$pss}';");
+   	    $result = $this->db->query("select Id,Correo,Clave from usuarios where Correo='{$user}' and Clave='{$pss}';");
    	    if($result->num_rows()>0)
    	    {
+   	    	$r = $result->row();
+   	    	var_dump($r);
+   	    	$_SESSION['id'] = $r->Id;
            $_SESSION['usuario'] = $user;
            $_SESSION['start'] = time();
            $_SESSION['expire'] = $_SESSION['start'] + (60*30);

@@ -64,29 +64,57 @@ class Intalador extends CI_Controller
 
 	
 		 
-		 	$sql3 = "Create table factura
-                    (
-                      codigo int auto_increment not null,
-                      cliente varchar(50) not null,
-                      rnc varchar(9) not null,
-                      fecha date not null,
-                      descripcion varchar(100),
-                      primary key(codigo)
-                    );"; 
-           mysqli_query($cn,$sql3);
-           $sql4 = "Create table detalle_factura
-                   (
-                      id int auto_increment not null,
-                      codigo_factura int not null,
-                      codigo_articulo int not null,
-                      nombre_articulo varchar(50) not null,
-                      precio_articulo int not null,
-                      cantidad_articulo int not null,
+		 	$sql2 = "Create Table `factura` (
+              `codigo` int(11) NOT NULL auto_increment,
+              `cliente` varchar(50) NOT NULL,
+              `rnc` varchar(9) NOT NULL,
+              `fecha` date NOT NULL,
+              `descripcion` varchar(100) default NULL,
+              `usuario_id` int(11) NOT NULL,
+              PRIMARY KEY  (`codigo`),
+              KEY `usuario_id_idx` (`usuario_id`)
+              ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;"; 
+              mysqli_query($cn,$sql2);
 
-                      comentario varchar(200),
-                      primary key(id)
-                   );"; 
-           mysqli_query($cn,$sql4);
+           $sql3 = "Create table detalle_factura
+                   (
+                       `id` int(11) NOT NULL auto_increment,
+                       `codigo_factura` int(11) NOT NULL,
+                       `codigo_articulo` int(11) NOT NULL,
+                       `nombre_articulo` varchar(50) NOT NULL,
+                       `precio_articulo` int(11) NOT NULL,
+                       `cantidad_articulo` int(11) NOT NULL,
+                       `comentario` varchar(200) default NULL,
+                       PRIMARY KEY  (`id`),
+                       KEY `codigo_factura_idx` (`codigo_factura`)
+                       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;"; 
+                    mysqli_query($cn,$sql3);
+
+             $sql4 = "
+                    Create Table `usuarios` (
+                   `Id` int(10) NOT NULL auto_increment,
+                   `Nombre` varchar(50) NOT NULL,
+                   `Apellido` varchar(50) NOT NULL,
+                   `Correo` varchar(50) NOT NULL,
+                   `Clave` varchar(50) NOT NULL,
+                   PRIMARY KEY  (`Id`),
+                   UNIQUE KEY `Correo` (`Correo`)
+                   ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;"; 
+                    mysqli_query($cn,$sql4);   
+
+
+                    $sql5 = "Alter Table `detalle_factura`
+                    ADD CONSTRAINT `codigo_factura` FOREIGN KEY (`codigo_factura`) 
+                    REFERENCES `factura` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE;";
+                      mysqli_query($cn,$sql5); 
+
+                      $sql6 = "Alter Table `factura`
+                      ADD CONSTRAINT `usuario_id` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;";
+                      mysqli_query($cn,$sql6); 
+
+
+
+
 $_POST = null;
     $this->load->view('factura/Inicio');
  

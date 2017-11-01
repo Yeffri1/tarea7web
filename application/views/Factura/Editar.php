@@ -25,7 +25,7 @@ $result = $CI->db->query("Select * from detalle_factura where codigo_factura='{$
 
 <div class='form-group input-group'>
 <span class='input-group-addon'>Cliente:</span>
-<input type='text' title="No se acepta numeros o caracteres extraños" name='txtcliente' pattern="A-Z a-z" value='<?php echo $data->cliente ?>'  class='form-control' required placeholder='Cliente'>
+<input type='text' title="No se acepta numeros o caracteres extraños" name='txtcliente' value='<?php echo $data->cliente ?>'  class='form-control' required placeholder='Cliente'>
 </div>
 
 <div class='form-group input-group'>
@@ -42,7 +42,7 @@ $result = $CI->db->query("Select * from detalle_factura where codigo_factura='{$
 
 <div class='form-group input-group'>
 <span class='input-group-addon'>Descripcion:</span>
-<input type='text' pattern="A-Za-z0-9" name='txtdescripcion' value='<?php echo $data->descripcion ?>'  class='form-control' required placeholder='Descripcion'>
+<input type='text' name='txtdescripcion' value='<?php echo $data->descripcion ?>'  class='form-control' required placeholder='Descripcion'>
 </div>
 
 

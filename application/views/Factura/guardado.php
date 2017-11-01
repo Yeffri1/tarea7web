@@ -11,7 +11,7 @@
 <center>
 	
 <h3 class="h3">Operacion Exitosa</h3>
-<a href="<?php echo base_url(); ?>" class="btn btn-info">Ir a inicio</a>
+<a href="<?php echo base_url('index.php?/Factura/'); ?>" class="btn btn-info">Ir a inicio</a>
 </center>
 </div>
 
