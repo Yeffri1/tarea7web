@@ -1,6 +1,6 @@
-<!-- <?php 
- // $CI =& get_instance();
-  //$CI->load->helper('url');
+ <?php 
+  $CI =& get_instance();
+ $CI->load->helper('url');
  ?>
 
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
 <div class="container">
 	<center>
 <div class="col col-md-6">
-//<form method="post" action="//<?php// echo base_url('index.php?/Intalador/Create') ?>" >
+<form method="post" action="<?php echo base_url('index.php?/Intalador/Create') ?>" >
 <br><br><br>
 <div class="row">
 <br><br><br>
@@ -50,7 +50,9 @@
 </div>
 
 </body>
-</html> -->
+</html> 
+
+<!--
 
 <!DOCTYPE html>
 <html lang="en">
@@ -109,9 +111,10 @@ p {
 </head>
 <body>
 	<div id="container">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
+		<h1><?php //echo $heading; ?></h1>
+		<?php //echo $message; ?>
 	</div>
 </body>
 </html>
 
+-->

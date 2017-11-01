@@ -22,7 +22,7 @@ class plantilla
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Tarea6</title>
+    <title>Tarea7</title>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
@@ -209,7 +209,7 @@ function calcular()
 		  <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Tarea6 web 2017</p>
+        <p class="m-0 text-center text-white">Copyright &copy; Tarea7 web 2017</p>
       </div>
       <!-- /.container -->
     </footer>

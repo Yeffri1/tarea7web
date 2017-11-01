@@ -116,7 +116,7 @@ class Intalador extends CI_Controller
 
 
 $_POST = null;
-    $this->load->view('factura/Inicio');
+    echo "<script>window.location='index.php?/Usuarios/registrarUsuario'</script>";
  
   } 
  else if(!$cn)
