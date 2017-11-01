@@ -19,19 +19,48 @@ class Usuarios extends CI_Controller
 	}
 	function registrarUsuario()
 	{
+		if($_POST)
+		{
 
-		$this->load->view("Usuarios/signup");
+		}
+		else
+		{
+	      $this->load->view("Usuarios/signup");
+		}
+
+		
 	}
 
 	function loguearUsuario()
 	{
 
-		$this->load->view("Usuarios/login");
-	}
+       require 'application\views\session.php';
+	    if($_POST)
+        {
+      	echo "Estoy aki";
+	    $user = $_POST['txtcorreo'];
+	    $pss = $_POST['txtpass'];
+   	    $result = $this->db->query("select Correo,Clave from usuarios where Correo='{$user}' and Clave='{$pss}';");
+   	    if($result->num_rows()>0)
+   	    {
+           $_SESSION['usuario'] = $user;
+           $_SESSION['start'] = time();
+           $_SESSION['expire'] = $_SESSION['start'] + (60*30);
+           $this->load->view("Factura/Inicio");
+	    }
+	    else
+	    {
+	      $this->salirUsuario();
+	    }
+	   }
+    } 
+	
 	function salirUsuario()
 	{
-
-		$this->load->view("Usuarios/logout");
+		require 'application\views\session.php';
+        unset ($SESSION['usuario']);
+        session_destroy();
+		$this->load->view("Usuarios/login");
 	}
 
 }

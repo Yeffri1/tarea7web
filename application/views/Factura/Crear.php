@@ -1,6 +1,12 @@
 <?php 
+require 'application\views\session.php';
 include('application\views\master.php');
 plantilla::inicio();
+
+$CI =& get_instance();
+
+if(isset($_SESSION['usuario']))
+{
  ?>
 
 
@@ -38,11 +44,6 @@ plantilla::inicio();
 </div>
 </div>
 
-
-
-
-
-
 </div>
 
 <fieldset>
@@ -74,4 +75,15 @@ plantilla::inicio();
 <a class='btn btn-info' onclick='agregarfila();'>Agregar Productos</a>
 </form>
 </div>
- 
+ <?php
+}
+else
+{
+	echo "<script type='text/javascript'>
+		alert('Lo siento, no tiene permiso para ver esta pagina');
+		window.location='index.php?/Usuarios';
+	</script>";
+	
+}
+?>
+

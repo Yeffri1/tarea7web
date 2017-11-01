@@ -1,4 +1,5 @@
 <?php 
+require 'application\views\session.php';
 include('application\views\master.php');
 plantilla::inicio();
 

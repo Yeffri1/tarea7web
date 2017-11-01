@@ -1,8 +1,13 @@
 <?php 
+require 'application\views\session.php';
+if(isset($_SESSION['usuario']))
+{?>
+<?
+
 include('application\views\master.php');
 plantilla::inicio();
-error_reporting(0);
 $CI =& get_instance();
+error_reporting(0);
 
  ?>
 
@@ -14,7 +19,7 @@ $CI =& get_instance();
 
 <form action="" method="post">
 	<label for="txtnombre">Buscar x Cliente:</label>
-<input type="text" title="No se acepta numeros y simbolos extraños" pattern="A-Za-z" name="txtnombre">
+<input type="text" title="No se acepta numeros y simbolos extraños" name="txtnombre">
 <input class="btn btn-info" type="submit" value="Ir">
 </form>
 
@@ -30,14 +35,14 @@ $CI =& get_instance();
  	<tbody>
  		<?php
  		if($_POST)
-        {
-        	$nombre = $_POST['txtnombre'];
-        	
-          $datos = $CI->db->query("Select * from factura where cliente like '%{$nombre}%' ");
-          if($datos->num_rows()>0)
           {
-           foreach($datos->result_array() as $dat)
-            {
+             $nombre = $_POST['txtnombre'];
+             $datos = $CI->db->query("Select * from factura where cliente like '%{$nombre}%' ");
+         
+          if($datos->num_rows()>0)
+           {
+            foreach($datos->result_array() as $dat)
+             {
             	$url = base_url("index.php?/factura/Editar/{$dat['codigo']}");
             	$url1 = base_url("index.php?/factura/Imprimir/{$dat['codigo']}");
          	    echo "
@@ -61,7 +66,8 @@ $CI =& get_instance();
 		{
 			echo "<h4>No encontrado</h4>";
 		}
-        }
+      }
+
         else
         {
           $datos = $CI->db->query('Select * from factura');
@@ -103,3 +109,14 @@ $CI =& get_instance();
 </div>
 </div>
 </div>
+<?php
+}
+else
+{
+	echo "<script>
+	alert('Lo siento, No tienes permiso para acceder a este sitio.');
+	window.location='index.php?/Usuarios';
+	</script>";
+
+}
+?>

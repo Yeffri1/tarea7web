@@ -1,29 +1,27 @@
 <?php 
-
 include('application/views/master.php');
 plantilla::inicio();
  ?>
-<style type="text/css">
-<?php
-include('application/views/style.css');
-?>
-</style>
- <div id="page-wrapper">
-			<div class="main-page">
-				<div class="login-form">
-					<h4>Login</h4>
-					<h5><strong>Bienvenido</strong> favor logearse para empezar!</h5>
-					<form name="login" action="" method="post">
-					
-						<input type="text" placeholder="Correo" name="txtcorreo" required>
-						<input type="password" class="pass" name="txtpass" placeholder="Password" required>
-						<div class="clearfix"></div>
-						<input class="btn btn-info btn-block" type="submit" value="Sign in">
-						
-						<p class="center-block mg-t mg-b">No tienes una cuenta?
-						<a href="<?php echo base_url('index.php?/Usuarios/registrarUsuario') ?>">Registrate aqui!</a>
-						</p>
-					</form>
-				</div>
-		</div>	
-	</div>	
+
+
+<center>
+	<div class="container">
+		<h2 class="h2">Login</h2>
+		<div class="col col-md-6 offset-3">
+		<form action="<? echo base_url('index.php?/Usuarios/loguearUsuario') ?>" method="post">
+
+			 <div class="form-group input-group">
+				<span class="input-group-addon">Usuario:</span>
+				<input type="text" class="form-control" placeholder="Ingrese Correo" name="txtcorreo">
+			  </div>
+
+			  <div class="form-group input-group">
+				<span class="input-group-addon">Clave:</span>
+				<input type="password" class="form-control" placeholder="Ingrese Correo" name="txtpass">
+			  </div>
+
+			  <input type="submit" value="Entrar" class="btn btn-success">
+		</form>
+		</div>
+	</div>
+</center>

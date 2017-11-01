@@ -3,27 +3,33 @@ include('application\views\master.php');
 plantilla::inicio();
 
  ?>
-<style type="text/css">
-<?php
-include('application/views/style.css');
-?>
-</style>
- <div class="container">
-    <div class="main-page">
-		<div class="sign-form">
-			<h4>Sign Up</h4>
-			<h5><strong>Crear</strong> Cuenta.</h5>
-			<form method="post" name="registro_user_form" action="guardar_usuario.php">
-			<input type="text" class="pass" name="txtnombre" placeholder="Nombre" required>
-			<input type="text" class="pass" name="txtapellido" placeholder="Apellido" required>
-			<input type="text" class="pass" name="txtcorreo" placeholder="Email address" required>
-			<input type="password" name="txtpassword"  placeholder="Password" required>
-			<input type="password" name="txtpassword_confirm" class="pass" placeholder="Confirm password" required>
-			<button class="btn btn-info btn-block" type="submit">Sign up</button>
-			<p class="center-block mg-t mg-b text-center">Ya tienes una cuenta?</p>
-						
-			</form>
-			<a href="index.php"><button class="btn btn-info btn-block" type="submit">Login</button></a>
+
+<div class="container">
+   	<h2 class="h2">Registrarse</h2>
+		<div class="col col-md-6 offset-3">
+		<form action="<? echo base_url('index.php?/Usuarios/registrarUsuario') ?>" method="post">
+
+			 <div class="form-group input-group">
+				<span class="input-group-addon">Nombre:</span>
+				<input type="text" class="form-control" placeholder="Ingrese nombre" name="txtnombre">
+			  </div>
+
+			  <div class="form-group input-group">
+				<span class="input-group-addon">Apellido:</span>
+				<input type="text" class="form-control" placeholder="Ingrese apellido" name="txtapellido">
+			  </div>
+
+			  <div class="form-group input-group">
+				<span class="input-group-addon">Correo:</span>
+				<input type="text" class="form-control" placeholder="Ingrese correo" name="txtcorreo">
+			  </div>
+
+			  <div class="form-group input-group">
+				<span class="input-group-addon">Clave:</span>
+				<input type="password" class="form-control" placeholder="Ingrese clave" name="txtclave">
+			  </div>
+
+			  <input type="submit" value="Entrar" class="btn btn-primary">
+		</form>
 		</div>
-	</div>	
 </div>
