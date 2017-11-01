@@ -1,4 +1,5 @@
 <?php 
+error_reporting(0);
 require 'application\views\session.php';
 if(isset($_SESSION['usuario']))
 {?>
@@ -7,7 +8,7 @@ if(isset($_SESSION['usuario']))
 include('application\views\master.php');
 plantilla::inicio();
 $CI =& get_instance();
-error_reporting(0);
+
 
  ?>
 
@@ -37,14 +38,15 @@ error_reporting(0);
  		if($_POST)
           {
              $nombre = $_POST['txtnombre'];
-             $datos = $CI->db->query("Select * from factura where cliente like '%{$nombre}%' and usuario_id='{$_SESSION['id']}'");
+             $datos = $CI->db->query("Select * from factura where cliente like '%{$nombre}%' and 
+             	 usuario_id='{$_SESSION['id']}'");
          
           if($datos->num_rows()>0)
            {
             foreach($datos->result_array() as $dat)
              {
             	$url = base_url("index.php?/factura/Editar/{$dat['codigo']}");
-            	$url1 = base_url("index.php?/factura/Imprimir/{$dat['codigo']}");
+            	$url1 = base_url("index.php?/factura/imprimir_factura/{$dat['codigo']}");
          	    echo "
 				<tr>
 				<td>{$dat['codigo']}</td>

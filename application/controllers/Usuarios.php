@@ -21,7 +21,13 @@ class Usuarios extends CI_Controller
 	{
 		if($_POST)
 		{
-
+			$data = array('Nombre'=>$_POST['txtnombre'],'Apellido'=>$_POST['txtapellido'],'Correo'=>$_POST['txtcorreo'],'Clave'=>$_POST['txtclave']);
+			$this->db->insert('usuarios',$data);
+		    $_SESSION['id'] = $this->db->insert_id();
+            $_SESSION['usuario'] = $user;
+            $_SESSION['start'] = time();
+            $_SESSION['expire'] = $_SESSION['start'] + (60*30);
+			$this->load->view('Factura/Inicio');
 		}
 		else
 		{
@@ -37,15 +43,13 @@ class Usuarios extends CI_Controller
        require 'application\views\session.php';
 	    if($_POST)
         {
-      	echo "Estoy aki";
 	    $user = $_POST['txtcorreo'];
 	    $pss = $_POST['txtpass'];
    	    $result = $this->db->query("select Id,Correo,Clave from usuarios where Correo='{$user}' and Clave='{$pss}';");
    	    if($result->num_rows()>0)
    	    {
    	    	$r = $result->row();
-   	    	var_dump($r);
-   	    	$_SESSION['id'] = $r->Id;
+   	       $_SESSION['id'] = $r->Id;
            $_SESSION['usuario'] = $user;
            $_SESSION['start'] = time();
            $_SESSION['expire'] = $_SESSION['start'] + (60*30);
@@ -61,7 +65,7 @@ class Usuarios extends CI_Controller
 	function salirUsuario()
 	{
 		require 'application\views\session.php';
-        unset ($SESSION['usuario']);
+        unset ($_SESSION['usuario']);
         session_destroy();
 		$this->load->view("Usuarios/login");
 	}
