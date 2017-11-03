@@ -19,7 +19,7 @@ if(isset($_SESSION['usuario']))
 <div class="col col-md-4">
 <div class="form-group input-group">
 <span class="input-group-addon">Cliente:</span>
-<input type="text" maxlength="20" title="No se acepta numeros o caracteres extraños" name="txtcliente"  class="form-control" required placeholder="Cliente">
+<input type="text"  name="txtcliente"  class="form-control" required placeholder="Cliente">
 </div>
 </div>
 
@@ -40,7 +40,7 @@ if(isset($_SESSION['usuario']))
 <div class="col col-md-4">
 <div class="form-group input-group">
 <span class="input-group-addon">Descripcion:</span>
-<input type="text" maxlength="30" name="txtdescripcion" class="form-control" required placeholder="Descripcion">
+<input type="text"  name="txtdescripcion" class="form-control" required placeholder="Descripcion">
 </div>
 </div>
 
